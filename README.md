@@ -1,4 +1,4 @@
-# bash_gtp
+# bash_gpt
 chatgpt from linux terminal!
 
 I've made a install script for making the program accessible from anywhere, it can also be done manually. 
