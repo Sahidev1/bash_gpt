@@ -20,7 +20,7 @@ npm install $install_dir
 
 echo "OPENAI_API_KEY=${open_ai_key}" > "${install_dir}/.env"
 
-rm "{$install_dir}/install.sh"
+rm "${install_dir}/install.sh"
 
 mv "${install_dir}/index.js" "${install_dir}/bashgpt"
 
