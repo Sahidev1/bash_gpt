@@ -16,12 +16,13 @@ unzip "${install_path}/bash_gpt.zip" -d "$install_path"
 mv "${install_path}/bash_gpt-main" "$install_dir"
 rm "${install_path}/bash_gpt.zip"
 
-npm install $install_dir
+cd $install_dir
+npm install
 
-echo "OPENAI_API_KEY=${open_ai_key}" > "${install_dir}/.env"
+echo "OPENAI_API_KEY=${open_ai_key}" > ".env"
 
-rm "${install_dir}/install.sh"
+rm "install.sh"
 
-mv "${install_dir}/index.js" "${install_dir}/bashgpt"
+mv "index.js" "bashgpt"
 
 echo "export PATH=${PATH}:${install_dir}" >> ~/.bashrc
