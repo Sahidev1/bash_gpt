@@ -25,4 +25,4 @@ rm install.sh
 
 mv index.js bashgpt
 
-echo "export PATH=${PATH}:${install_dir}" >> ~/.bashrc
+printf "\nexport PATH=${PATH}:${install_dir}\n" >> ~/.bashrc
