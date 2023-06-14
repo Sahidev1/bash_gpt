@@ -3,7 +3,7 @@
 install_path="$HOME/.local/bin"  # Use $HOME instead of ~ for reliable path expansion
 install_dir="${install_path}/bash_gpt"
 
-open_ai_key=$1
+open_ai_key=$1 # first arg should be the open_ai key.
 
 if [ ! -d "$install_path" ]; then  # Check if directory exists before creating it
     mkdir -p "$install_path"  # Use -p to make parent directories as needed
