@@ -1,6 +1,7 @@
 # Bash_GPT
 
 Chat with OpenAI's GPT-3 model from your linux terminal!
+Note that this program is very basic, it lacks persistence of messages so the AI does not have "memory". 
 
 ## Installation
 
