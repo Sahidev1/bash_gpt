@@ -14,10 +14,13 @@ wget https://github.com/Sahidev1/bash_gpt/archive/refs/heads/main.zip -O "${inst
 # The unzip command will create a new directory called "bash_gpt-main", so we need to handle that
 unzip "${install_path}/bash_gpt.zip" -d "$install_path"
 mv "${install_path}/bash_gpt-main" "$install_dir"
+rm "${install_path}/bash_gpt.zip"
 
 npm install $install_dir
 
 echo "OPENAI_API_KEY=${open_ai_key}" > "${install_dir}/.env"
+
+rm "{$install_dir}/install.sh"
 
 mv "${install_dir}/index.js" "${install_dir}/bashgpt"
 
