@@ -1,5 +1,7 @@
 const { Configuration, OpenAIApi } = require("openai");
-require('dotenv').config();
+require('dotenv').config({
+    path: require('path').resolve(__dirname, './.env')
+});  
 const { stdoutDataStreamFilter } = require("./util");
 
 const config = new Configuration({
