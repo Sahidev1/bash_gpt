@@ -21,8 +21,8 @@ npm install
 
 echo "OPENAI_API_KEY=${open_ai_key}" > ".env"
 
-rm "install.sh"
+rm install.sh
 
-mv "index.js" "bashgpt"
+mv index.js bashgpt
 
 echo "export PATH=${PATH}:${install_dir}" >> ~/.bashrc
