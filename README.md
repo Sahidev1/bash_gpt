@@ -4,6 +4,10 @@ Chat with OpenAI's GPT-3 model from your linux terminal!
 
 Note that this program is very basic, it lacks persistence of messages so the AI does not have "memory". Persistance will be implemented later on.
 
+## Requirements and Dependencies
+You need node 14.2.0 or higher. You also need NPM to install the programs dependencies.
+The programs dependencies can be seen in the package.json file.
+
 ## Installation
 
 You can install bash_gpt in two ways, either by running the provided install script or manually. 
