@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 const prompt = require ("./chatgpt");
-const {parseArgs} = require ("./argHandler");
+const {parseArgs} = require ("./opthandler");
 
 try {
     args = parseArgs();
