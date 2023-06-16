@@ -24,5 +24,5 @@ echo "OPENAI_API_KEY=${open_ai_key}" > ".env"
 rm install.sh
 
 echo 'function bashgpt() {' >> ~/.bashrc
-echo '    source /path/to/your/bashgpt.sh "$@"' >> ~/.bashrc
+echo "    source ${install_dir}/bashgpt.sh "'"$@"' >> ~/.bashrc
 echo '}' >> ~/.bashrc
