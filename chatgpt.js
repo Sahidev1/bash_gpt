@@ -10,15 +10,29 @@ const config = new Configuration({
 
 const openai = new OpenAIApi(config);
 
-const prompt = async (msg, role) => {
+//valid roles for prompt: user and system
+const prompt = async (messages) => {
     try {
         const completion = await openai.createChatCompletion({
             model: "gpt-3.5-turbo",
-            messages: [{role: role||"user", content: msg}],
+            messages: messages,
             stream:true,
         }, { responseType: 'stream'});
-        console.log(`ROLE: ${role}\nMESSAGE:\n`);
-        completion.data.on('data', (data) => stdoutDataStreamFilter(data));
+        console.log(`MESSAGE:\n`);
+        let accumData = "";
+
+        return new Promise((resolve, reject) => {
+            completion.data.on('data', (data) => {
+                let content = stdoutDataStreamFilter(data);
+                accumData = accumData.concat(content);
+            });
+            completion.data.on('end', () => {
+                resolve(accumData);
+            });
+            completion.data.on('error', (err) => {
+                reject(err);
+            });
+        });
 
     } catch (error) {
         console.error('error', error);

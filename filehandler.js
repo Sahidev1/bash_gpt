@@ -1,20 +1,47 @@
 const { error } = require('console');
 const fs = require('fs');
 
-const tmpFolderPaths = ['/tmp', '/var/tmp','/run/user/'+process.env.UID+'/tmp'] 
-const filename = 'bashgpt_tmp'+process.env.sid+'.txt';
+const TEMP_FILE_PATH = process.env.TEMP_FILE;
 
-const findtmp = () => {
-    let foundPath;
-    if ((foundPath = tmpFolderPaths.find(path => fs.existsSync(path)))) return foundPath;
-    else throw new Error("No temp folder found");
-}
+const NO_TEMPFILE_WARNING = "Temp file not found!, make sure"+
+"you run this programming use the bash script!";
 
-const jsonWrite = (contentarr ,content) => {
+const readTempFile = () => {
+    if (!TEMP_FILE_PATH) throw new Error(NO_TEMPFILE_WARNING);
     try {
-        const tmpPath = findtmp();
-        const filePath = tmpPath.concat('/bashgpt')
+        return fs.readFileSync(TEMP_FILE_PATH);
     } catch (error) {
         console.error('error', error);
     }
 }
+
+// Note this function overwrites everything in the file
+const writeTempFile = (data) => {
+    if (!TEMP_FILE_PATH) throw new Error(NO_TEMPFILE_WARNING);
+    try {
+        return fs.writeFileSync(TEMP_FILE_PATH, data);
+    } catch (error) {
+        console.error('error', error);
+    }
+}
+
+const getMsgArrFromTmp = () => {
+    try {
+        const readData = readTempFile().toString();
+        return readData?JSON.parse(readData)?.messages:[];
+    } catch (error) {
+        console.error('error', error);
+    }
+}
+
+const writeMsgArrToTmp = (arr) => {
+    const arrObj = {messages: arr};
+    const jsonString = JSON.stringify(arrObj);
+    try {
+        writeTempFile (jsonString);
+    } catch (error) {
+        console.error('error', error);
+    }
+}
+
+module.exports = {getMsgArrFromTmp, writeMsgArrToTmp}

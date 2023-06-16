@@ -23,6 +23,6 @@ echo "OPENAI_API_KEY=${open_ai_key}" > ".env"
 
 rm install.sh
 
-mv index.js bashgpt
-
-printf "\nexport PATH=${PATH}:${install_dir}\n" >> ~/.bashrc
+echo 'function bashgpt() {' >> ~/.bashrc
+echo '    source /path/to/your/bashgpt.sh "$@"' >> ~/.bashrc
+echo '}' >> ~/.bashrc
