@@ -1,3 +1,4 @@
+# REAMDE is very outdated
 # Bash_GPT
 
 Chat with OpenAI's GPT-3 model from your linux terminal!
