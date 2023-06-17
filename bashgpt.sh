@@ -17,4 +17,5 @@ if [ -z "$TRAP_SET" ]; then
 fi
 
 # call nodejs script, make sure to cover all possible parameters.
-node index.js $1 "$2" $3 "$4"
+INDEX_PATH="$HOME/.local/bin/bash_gpt/index.js"
+node $INDEX_PATH $1 "$2" $3 "$4"
