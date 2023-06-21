@@ -3,9 +3,17 @@ require('dotenv').config({
     path: require('path').resolve(__dirname, './.env')
 });  
 const { stdoutDataStreamFilter } = require("./util");
+const { readConfig } = require("./filehandler");
+
+const jsonConfig = readConfig();
+
+if (!process.env.OPENAI_API_KEY && !jsonConfig.OPENAI_API_KEY){
+    console.log('No OPEN_API_KEY detected, rub bashgpt with -k parameter with your openai key to set keys or change keys');
+    process.exit(1);
+}
 
 const config = new Configuration({
-    apiKey: process.env.OPENAI_API_KEY,
+    apiKey: process.env.OPENAI_API_KEY || jsonConfig.OPENAI_API_KEY,
 });
 
 const openai = new OpenAIApi(config);
@@ -35,7 +43,7 @@ const prompt = async (messages) => {
         });
 
     } catch (error) {
-        console.error('error', error);
+        console.error('If your openai key doesnt work and you want to change it use bashgpt with -k option along with new openai key to change it', error);
     }
 }
 

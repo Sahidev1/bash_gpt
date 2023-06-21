@@ -1,5 +1,6 @@
 const { error } = require('console');
 const fs = require('fs');
+const path = require('path');
 
 const TEMP_FILE_PATH = process.env.BASHGPT_TEMP_FILE;
 
@@ -44,4 +45,16 @@ const writeMsgArrToTmp = (arr) => {
     }
 }
 
-module.exports = {getMsgArrFromTmp, writeMsgArrToTmp}
+const readConfig = () => {
+    const configPath = path.join(__dirname, 'conf.json');
+    const configFile = fs.readFileSync(configPath, 'utf8');
+    return JSON.parse(configFile);
+}
+
+const writeConfig = (config) => {
+    const configPath = path.join(__dirname, 'conf.json');
+    const configData = JSON.stringify(config, null, 2);
+    fs.writeFileSync(configPath, configData, 'utf8');
+}
+
+module.exports = {getMsgArrFromTmp, writeMsgArrToTmp, readConfig, writeConfig}

@@ -6,12 +6,16 @@ const parseArgs = () => {
         .option('role', {
             alias: 'r',
             type: 'string',
-            description: 'Choose role of AI'
+            description: 'Choose your role to prompt AI with, only user and system are valid roles'
         })
-        .option('message' ,{
-            alias: 'm',
+        .option('prompt' ,{
+            alias: 'p',
             type: 'string',
             description: 'Prompt message'
+        }).option('api_key', {
+            alias: 'k',
+            type: 'string',
+            description: 'Change or add API_KEY env variable'
         })
         .help()
         .alias('help', 'h')
