@@ -1,4 +1,4 @@
-function dataStreamFilter(data) {
+function parseOpenAIdata(data) {
     let chunks = data.toString().split('data: ').filter(elem => elem != '');
     jsonchunks = chunks.map(chunk => {
         return chunk.includes('[DONE]') ? '' : JSON.parse(chunk);
@@ -12,7 +12,7 @@ function dataStreamFilter(data) {
 }
 
 const stdoutDataStreamFilter = (data) => {
-    let content = dataStreamFilter(data);
+    let content = parseOpenAIdata(data);
     let contentString = "";
     content.forEach(element => {
         process.stdout.write(element);
