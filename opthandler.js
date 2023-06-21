@@ -1,6 +1,8 @@
 const yargs = require('yargs/yargs');
 const { hideBin } = require('yargs/helpers');
 
+const DEFAULT_ROLE = 'user';
+
 const parseArgs = () => {
     const argv = yargs(hideBin(process.argv))
         .option('role', {
@@ -20,10 +22,16 @@ const parseArgs = () => {
         .help()
         .alias('help', 'h')
         .argv;
-    
-        const params = {role: argv.role||'user'};
-        if (argv.message) {
-            params.message = argv.message;
+
+
+        const params = {};
+        if (argv.api_key) {
+            params.api_key = argv.api_key;
+            return params;
+        }
+        if (argv.prompt) {
+            params.role = argv.role || DEFAULT_ROLE;
+            params.prompt = argv.prompt;
             return params;
         }
         else {
