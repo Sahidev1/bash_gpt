@@ -7,10 +7,6 @@ const { readConfig } = require("./filehandler");
 
 const jsonConfig = readConfig();
 
-if(!process.env.OPENAI_API_KEY && !jsonConfig.OPENAI_API_KEY){
-    throw new Error('No OPEN_API_KEY detected, run bashgpt with -k parameter with your openai key to set keys or change keys')
-}
-
 const config = new Configuration({
     apiKey: process.env.OPENAI_API_KEY || jsonConfig.OPENAI_API_KEY,
 });
@@ -19,6 +15,9 @@ const openai = new OpenAIApi(config);
 
 //valid roles for prompt: user and system
 const prompt = async (messages) => {
+    if(!process.env.OPENAI_API_KEY && !jsonConfig.OPENAI_API_KEY){
+        throw new Error('No OPEN_API_KEY detected, run bashgpt with -k parameter with your openai key to set keys or change keys')
+    }
     try {
         const completion = await openai.createChatCompletion({
             model: "gpt-3.5-turbo",
