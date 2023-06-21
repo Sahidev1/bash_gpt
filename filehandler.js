@@ -1,7 +1,7 @@
 const { error } = require('console');
 const fs = require('fs');
 
-const TEMP_FILE_PATH = process.env.TEMP_FILE;
+const TEMP_FILE_PATH = process.env.BASHGPT_TEMP_FILE;
 
 const NO_TEMPFILE_WARNING = "Temp file not found!, make sure"+
 "you run this programming use the bash script!";
