@@ -3,6 +3,11 @@
 Chat with OpenAI's GPT-3 model from your Linux terminal!
 
 This application now supports persistent conversations, allowing the AI to retain "memory" from previous interactions within the current active shell session, note that all conversation data is lost when the shell session is ended.
+
+Below is a short demo:
+
+[output.webm](https://github.com/Sahidev1/bash_gpt/assets/80922338/b574b029-1368-4e34-9982-58a77cda7d93)
+
 ## Requirements and Dependencies
 
 You need Node.js 14.2.0 or higher. You also need NPM to install the program's dependencies. The program's dependencies can be seen in the package.json file.
