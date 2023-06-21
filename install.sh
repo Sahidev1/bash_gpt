@@ -23,8 +23,8 @@ fi
 wget https://github.com/Sahidev1/bash_gpt/archive/refs/heads/main.zip -O "${install_path}/bash_gpt.zip"|| { echo 'Failed to download instal files'; exit 1;}
 
 # The unzip command will create a new directory called "bash_gpt-main", so we need to handle that
-unzip "${install_path}/bash_gpt.zip" -d "$install_path" || {echo 'failed to unzip install files'; exit 1;}
-mv "${install_path}/bash_gpt-main" "$install_dir" || {echo 'failed to rename install path'; exit 1;}
+unzip "${install_path}/bash_gpt.zip" -d "$install_path" || { echo 'failed to unzip install files'; exit 1;}
+mv "${install_path}/bash_gpt-main" "$install_dir" || { echo 'failed to rename install path'; exit 1;}
 rm "${install_path}/bash_gpt.zip"
 
 
