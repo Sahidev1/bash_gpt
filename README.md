@@ -1,55 +1,57 @@
-# REAMDE is very outdated
 # Bash_GPT
 
-Chat with OpenAI's GPT-3 model from your linux terminal!
+Chat with OpenAI's GPT-3 model from your Linux terminal!
 
-Note that this program is very basic, it lacks persistence of messages so the AI does not have "memory". Persistance will be implemented later on.
-
+This application now supports persistent conversations, allowing the AI to retain "memory" from previous interactions within the current active shell session, note that all conversation data is lost when the shell session is ended.
 ## Requirements and Dependencies
-You need node 14.2.0 or higher. You also need NPM to install the programs dependencies.
-The programs dependencies can be seen in the package.json file.
 
+You need Node.js 14.2.0 or higher. You also need NPM to install the program's dependencies. The program's dependencies can be seen in the package.json file.
 ## Installation
 
-You can install bash_gpt in two ways, either by running the provided install script or manually. 
+To install Bash_GPT, please use the provided installation script.
 
-**Note**: You run the script at your own risk.
+Note: You run the script at your own risk. Make sure to review it before running.
+### Using the Installation Script
 
-### Install Script
+To use the install script, run the following commands in your terminal:
 
-To use the install script, run the following command in your terminal: 
 
-```shell
-curl -o install.sh https://raw.githubusercontent.com/Sahidev1/bash_gpt/main/install.sh
+```
+curl -o- https://raw.githubusercontent.com/Sahidev1/bash_gpt/main/install.sh
 ```
 
-Then, make the script executable by running: 
-
-```shell
+after the script has been installed give it execution permission:
+```
 chmod +x install.sh
 ```
-
-Finally, execute the script with your open ai key:
-
-```shell
+Running the installer: 
+```
 ./install.sh YOUR_OPEN_AI_KEY
 ```
+Note that giving your key to the install script is optional you can add it later.
 
+
+To set up your key if you didn't give it to the install script, do this after running that install script:
+```
+bashgpt -k YOUR_OPEN_AI_KEY
+```
 
 ## Usage
 
-To use `bash_gpt`, run commands like this example:
+To use bash_gpt, run commands like this example:
 
-```shell
-bashgpt -r "assistant" -m "how to program a duck in C?"
+
+```
+bashgpt -r "system" -p "how to program a duck in C?"
 ```
 
-Note that `-r` is to set the persona (or "AI identity") that will be used in the conversation while `-m` sets the message that you want to start the conversation with. 
-if `-r`is omitted the role defaults to "user".
+Note that -r is to set the role (either 'user' or 'assistant') that will be used in the conversation while -p sets the prompt that you want to start the conversation with. If -r is omitted, the role defaults to "user".
+
+To change your api key do this: 
+```
+bashgpt -k YOUR_OPEN_AI_KEY
+```
 
 ## Disclaimer
 
 Please note that this project comes with no warranty or guarantees of any kind. You are solely responsible for any damage or loss of data that may occur while using the script. Use it at your own risk.
-
-
-
