@@ -17,7 +17,7 @@ To use the install script, run the following commands in your terminal:
 
 
 ```
-curl -o- https://raw.githubusercontent.com/Sahidev1/bash_gpt/main/install.sh
+curl -o- https://raw.githubusercontent.com/Sahidev1/bash_gpt/main/install.sh > install.sh
 ```
 
 after the script has been installed give it execution permission:
