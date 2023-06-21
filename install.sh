@@ -32,7 +32,7 @@ rm "${install_path}/bash_gpt.zip"
 cd $install_dir
 npm install
 
-echo "OPENAI_API_KEY=${open_ai_key}" > "conf.json"
+echo '"OPENAI_API_KEY":"'"${open_ai_key}"'"' > "conf.json"
 
 rm install.sh
 cp ~/.bashrc ~/.bashrc.bak
