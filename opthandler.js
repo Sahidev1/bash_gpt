@@ -1,14 +1,14 @@
 const yargs = require('yargs/yargs');
 const { hideBin } = require('yargs/helpers');
 
-const DEFAULT_ROLE = 'user';
-
 const parseArgs = () => {
     const argv = yargs(hideBin(process.argv))
         .option('role', {
             alias: 'r',
             type: 'string',
-            description: 'Choose your role to prompt AI with, only user and system are valid roles'
+            description: 'Choose your role to prompt AI with, only user and system are valid roles',
+            choices: ['system', 'user'],
+            default: 'user'
         })
         .option('prompt' ,{
             alias: 'p',
@@ -23,16 +23,11 @@ const parseArgs = () => {
         .alias('help', 'h')
         .argv;
 
-
-        const params = {};
         if (argv.api_key) {
-            params.api_key = argv.api_key;
-            return params;
+            return {api_key: argv.api_key};
         }
-        if (argv.prompt) {
-            params.role = argv.role || DEFAULT_ROLE;
-            params.prompt = argv.prompt;
-            return params;
+        else if (argv.prompt) {
+            return { role: argv.role, prompt: argv.prompt};
         }
         else {
             throw new Error('No prompt detected, use -h for help');
