@@ -3,7 +3,7 @@
 
 #check if BASHGPT_TEMP_FILE environment variable exists.
 if [ -z "$BASHGPT_TEMP_FILE" ]; then
-    export BASHGPT_TEMP_FILE="/tmp/bashgpt_tmp_$(date +%s%N)-$$.txt"
+    export BASHGPT_TEMP_FILE="/tmp/bashgpt_tmp_$(date +%s%N)-$$.json"
     touch $BASHGPT_TEMP_FILE || { echo 'Failed to create temp file'; return 1; }
 fi
 
