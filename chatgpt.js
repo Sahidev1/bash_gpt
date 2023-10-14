@@ -20,7 +20,7 @@ const prompt = async (messages) => {
     }
     try {
         const completion = await openai.createChatCompletion({
-            model: "gpt-3.5-turbo",
+            model: jsonConfig.GPT_MODEL||"gpt-3.5-turbo",
             messages: messages,
             stream:true,
         }, { responseType: 'stream'});

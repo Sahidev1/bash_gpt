@@ -18,6 +18,10 @@ const parseArgs = () => {
             alias: 'k',
             type: 'string',
             description: 'Change or add API_KEY env variable'
+        }).option('set_model', {
+            alias:'m',
+            type:'string',
+            description:'Change GPT model'
         })
         .help()
         .alias('help', 'h')
@@ -25,6 +29,9 @@ const parseArgs = () => {
 
         if (argv.api_key) {
             return {api_key: argv.api_key};
+        }
+        else if (argv.set_model){
+            return {model: argv.set_model};
         }
         else if (argv.prompt) {
             return { role: argv.role, prompt: argv.prompt};
