@@ -41,6 +41,10 @@ To set up your key if you didn't give it to the install script, do this after ru
 bashgpt -k YOUR_OPEN_AI_KEY
 ```
 
+## Uninstalling 
+Remove the bashgpt folder from /home/user/.local/bin 
+To fully uninstall remove the function bashgpt() from the .bashrc file at /home/user
+
 ## Usage
 
 To use bash_gpt, run commands like this example:
