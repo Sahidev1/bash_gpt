@@ -55,11 +55,16 @@ To use bash_gpt, run commands like this example:
 bashgpt -r "system" -p "how to program a duck in C?"
 ```
 
-Note that -r is to set the role (either 'user' or 'assistant') that will be used in the conversation while -p sets the prompt that you want to start the conversation with. If -r is omitted, the role defaults to "user".
+Note that -r is to set the role (either 'user' or 'system') that will be used in the conversation while -p sets the prompt that you want to start the conversation with. If -r is omitted, the role defaults to "user".
 
 To change your api key do this: 
 ```
-bashgpt -k YOUR_OPEN_AI_KEY
+bashgpt -k YOUR_OPEN_AI_KEY 
+```
+
+To change GPT model do this:
+```
+bashgpt -m NAME_OF_GPT_MODEL 
 ```
 
 ## Disclaimer
