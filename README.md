@@ -43,6 +43,7 @@ bashgpt -k YOUR_OPEN_AI_KEY
 
 ## Uninstalling 
 Remove the bashgpt folder from /home/user/.local/bin 
+
 To fully uninstall remove the function bashgpt() from the .bashrc file at /home/user
 
 ## Usage
