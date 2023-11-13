@@ -12,7 +12,7 @@ const mainf = async () =>
             const config = readConfig();
             config.OPENAI_API_KEY = args.api_key;
             writeConfig(config);
-            console.log("API keys updated");
+            console.log("API keys updated\nIf prompting causes errors try opening a new terminal window\n");
             process.exit(0);
         }
 
