@@ -13,7 +13,6 @@ const config = {
 const openai = new OpenAI(config);
 
 const prompt = async (messages) => {
-    console.log(messages);
     if(!process.env.OPENAI_API_KEY && !jsonConfig.OPENAI_API_KEY){
         throw new Error('No OPEN_API_KEY detected, run bashgpt with -k parameter with your openai key to set keys or change keys')
     }
