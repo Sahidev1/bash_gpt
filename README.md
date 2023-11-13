@@ -1,5 +1,7 @@
 # Bash_GPT
 
+### Current status: 2023-10-10 Broken, does not work, will fix when have time over.
+
 Chat with OpenAI's GPT-3 model from your Linux terminal!
 
 This application now supports persistent conversations, allowing the AI to retain "memory" from previous interactions within the current active shell session, note that all conversation data is lost when the shell session is ended.
