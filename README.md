@@ -1,6 +1,6 @@
 # Bash_GPT
 
-### Current status: 2023-10-10 Broken, does not work, will fix when have time over.
+### Current status: 2023-10-13 Functioning, works fine after using most recent OpenAPI library.
 
 Chat with OpenAI's GPT-3 model from your Linux terminal!
 
