@@ -29,6 +29,7 @@ const prompt = async (messages) => {
             process.stdout.write(chunkdata);
             accumdata = accumdata.concat(chunkdata);
         }
+        process.stdout.write('\n');
         accumdata = accumdata.concat('\n');
         return accumdata;
     } catch (error) {
