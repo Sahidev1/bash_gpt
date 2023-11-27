@@ -5,6 +5,35 @@ const prompt = require ("./chatgpt");
 const {parseArgs} = require ("./opthandler");
 const {getMsgArrFromTmp, writeMsgArrToTmp, writeConfig, readConfig, clearSessionHistory} = require("./filehandler");
 
+const scanStdin = async (question) => {
+    const rl = readline.createInterface({
+        input: process.stdin,
+        output: process.stdout
+    });
+    return new Promise((resolve, reject) => {
+        rl.question(question, (answer) => {
+            rl.close();
+            resolve(answer);
+        });
+    });
+};
+
+const interactiveChat = async () => {
+    let msgArr = getMsgArrFromTmp();
+    let responseMsg;
+    const EXIT_COMMAND = "exit";
+    let curr_input;
+    console.log("Interactive chat mode, type exit to quit");
+    do {
+        curr_input = await scanStdin(">");
+        if (curr_input !== EXIT_COMMAND){
+            msgArr = [...msgArr, {role: "user", content: curr_input}];
+            responseMsg = await prompt(msgArr);
+            msgArr = [...msgArr, {role: "assistant", content: responseMsg}];
+        }
+    } while (curr_input !== EXIT_COMMAND);
+    writeMsgArrToTmp(msgArr);
+}
 
 
 const mainf = async () => 
@@ -24,19 +53,6 @@ const mainf = async () =>
             console.log("GPT Model updated!");
         }
         else if (args.clear_history){
-            const scanStdin = async (question) => {
-                const rl = readline.createInterface({
-                    input: process.stdin,
-                    output: process.stdout
-                });
-                return new Promise((resolve, reject) => {
-                    rl.question(question, (answer) => {
-                        rl.close();
-                        resolve(answer);
-                    });
-                });
-            };
-   
             const answer = await scanStdin("Are you sure you want to clear session history? (y/n): ");
             if (answer === "y"){
                 clearSessionHistory();
@@ -45,6 +61,9 @@ const mainf = async () =>
             else {
                 console.log("Session history not cleared!");
             }
+        }
+        else if (args.interactive){
+            await interactiveChat();
         } else {
             const msgArr = getMsgArrFromTmp();
             const updatedMsgArr = [...msgArr, {role: args.role || "user", content: args.prompt}];

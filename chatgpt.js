@@ -24,6 +24,7 @@ const prompt = async (messages) => {
         });
         let accumdata = "";
         let chunkdata = "";
+        process.stdout.write("AI@chatgpt: ");
         for await (const chunk of stream){
             chunkdata = chunk.choices[0]?.delta?.content || '';
             process.stdout.write(chunkdata);

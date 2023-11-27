@@ -26,6 +26,10 @@ const parseArgs = () => {
             alias:'c',
             type:'boolean',
             description:'Clear shell session chat history, useful if prompting stops working'
+        }).option('interactive',{
+            alias:'i',
+            type:'boolean',
+            description:'Interactive chat mode'
         })
         .help()
         .alias('help', 'h')
@@ -36,6 +40,9 @@ const parseArgs = () => {
         }
         else if (argv.clear_history) {
             return {clear_history: true};
+        }
+        else if (argv.interactive) {
+            return {interactive: true};
         }
         else if (argv.set_model){
             return {model: argv.set_model};
