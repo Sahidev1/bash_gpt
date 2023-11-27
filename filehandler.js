@@ -63,6 +63,15 @@ const writeMsgArrToTmp = (arr) => {
     }
 }
 
+const clearSessionHistory = () => {
+    try {
+        writeTempFile(JSON.stringify({messages: []}));
+    } catch (error) {
+        console.error('error', error.message);
+        throw error;
+    }
+}
+
 // function that reads the json config file
 const readConfig = () => {
     const configPath = path.join(__dirname, 'conf.json');
@@ -77,4 +86,4 @@ const writeConfig = (config) => {
     fs.writeFileSync(configPath, configData, 'utf8');
 }
 
-module.exports = {getMsgArrFromTmp, writeMsgArrToTmp, readConfig, writeConfig}
+module.exports = {getMsgArrFromTmp, writeMsgArrToTmp, readConfig, writeConfig, clearSessionHistory}

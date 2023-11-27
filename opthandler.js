@@ -22,6 +22,10 @@ const parseArgs = () => {
             alias:'m',
             type:'string',
             description:'Change GPT model'
+        }).option('clear_history',{
+            alias:'c',
+            type:'boolean',
+            description:'Clear shell session chat history, useful if prompting stops working'
         })
         .help()
         .alias('help', 'h')
@@ -29,6 +33,9 @@ const parseArgs = () => {
 
         if (argv.api_key) {
             return {api_key: argv.api_key};
+        }
+        else if (argv.clear_history) {
+            return {clear_history: true};
         }
         else if (argv.set_model){
             return {model: argv.set_model};
