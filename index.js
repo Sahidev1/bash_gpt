@@ -25,7 +25,7 @@ const interactiveChat = async () => {
     let curr_input;
     console.log("Interactive chat mode, type exit to quit");
     do {
-        curr_input = await scanStdin(">");
+        curr_input = await scanStdin('\x1b[1m\x1b[32m' + 'User>' + '\x1b[0m');
         if (curr_input !== EXIT_COMMAND){
             msgArr = [...msgArr, {role: "user", content: curr_input}];
             responseMsg = await prompt(msgArr);
