@@ -50,24 +50,47 @@ To fully uninstall remove the function bashgpt() from the .bashrc file at /home/
 
 ## Usage
 
-To use bash_gpt, run commands like this example:
+* To see all possible CLI commands do this:
+```
+bashgpt -h
+```
+
+* To use bash_gpt, run commands like this example:
 
 
 ```
 bashgpt -r "system" -p "how to program a duck in C?"
 ```
+or omit -r which will default role to user:
+```
+bashgpt -p "how to program a duck in C?"
+```
 
 Note that -r is to set the role (either 'user' or 'system') that will be used in the conversation while -p sets the prompt that you want to start the conversation with. If -r is omitted, the role defaults to "user".
 
-To change your api key do this: 
+* To change your api key do this: 
 ```
 bashgpt -k YOUR_OPEN_AI_KEY 
 ```
 
-To change GPT model do this:
+* To change GPT model do this:
 ```
 bashgpt -m NAME_OF_GPT_MODEL 
 ```
+
+* To clear session chat history do this:
+```
+bashgpt -c
+```
+above command could become nessacary if prompting in the session gets bugged, however all shell chat-session data will be lost. In future a better method of handling corrupted chat-histoty temp file will be created so not all data is lost.
+
+* To enter interactive chat mode do this:
+```
+bashgpt -i
+```
+to exit interactive mode in interactive mode type "exit";
+If "exit" isn't used for exiting the interactive mode all chat history within that interactive chat will be lost from the shell session. 
+
 
 ## Disclaimer
 
