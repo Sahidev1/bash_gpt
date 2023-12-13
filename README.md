@@ -91,6 +91,16 @@ bashgpt -i
 to exit interactive mode in interactive mode type "exit";
 If "exit" isn't used for exiting the interactive mode all chat history within that interactive chat will be lost from the shell session. 
 
+## Developers
+For now if you want to change the code you still need an installation. 
+
+To run code directly from cloned repository you need to have performed the installation and 
+ran the system bashgpt shell command to initialize the tmp file within your session. You also need to add your API-KEY in an .env file in the repository. Then you can run your version of the program directly from the repo by running index.js:
+```
+node index.js -p YOUR_PROMPT
+```
+
+This is not ideal. And in the future a way of completely perform this from local repo must be implemented. 
 
 ## Disclaimer
 
