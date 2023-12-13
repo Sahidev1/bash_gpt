@@ -31,7 +31,6 @@ const prompt = async (messages) => {
             accumdata = accumdata.concat(chunkdata);
         }
         process.stdout.write('\n');
-        accumdata = accumdata.concat('\n');
         return accumdata;
     } catch (error) {
         console.error('If your openai key doesnt work and you want to change it use bashgpt with -k option along with new openai key to change it\n', error.messages);
