@@ -18,4 +18,4 @@ fi
 
 # call nodejs script, make sure to cover all possible parameters.
 INDEX_PATH="$HOME/.local/bin/bash_gpt/index.js"
-node $INDEX_PATH "$@" || { echo 'Failed run bashgpt node program'; return 1;}
+node --no-deprecation $INDEX_PATH "$@" || { echo 'Failed run bashgpt node program'; return 1;}
